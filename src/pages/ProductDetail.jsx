@@ -228,14 +228,14 @@ export default function ProductDetail() {
             {/* Buttons */}
             <div className="mt-8 space-y-3">
               <button onClick={handleAddToCart} disabled={!canAddToCart}
-                className="w-full py-4 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                className="w-full py-4 rounded-lg bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.18em] uppercase transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                 <ShoppingBag size={18} />
-                AGREGAR AL CARRITO
+                Agregar al carrito
               </button>
               <button onClick={handleBuyNow} disabled={!canAddToCart}
-                className="w-full py-4 border border-white text-white font-heading text-sm tracking-[0.15em] hover:bg-white hover:text-black transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                className="w-full py-4 rounded-lg border border-white/25 text-white font-heading text-sm tracking-[0.18em] uppercase hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                 <Zap size={18} />
-                COMPRAR AHORA
+                Comprar ahora
               </button>
             </div>
 
@@ -352,8 +352,8 @@ export default function ProductDetail() {
             : <span className="text-[10px] text-[#E8003A]">↑ Elige tu talla</span>}
         </div>
         <button onClick={handleAddToCart} disabled={!canAddToCart}
-          className="flex-1 py-3 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
-          AGREGAR
+          className="flex-1 py-3 rounded-lg bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.18em] uppercase transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed">
+          Agregar
         </button>
       </div>
 

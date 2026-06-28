@@ -1,20 +1,24 @@
 import React from 'react';
+import { Truck, RotateCcw, ShieldCheck } from 'lucide-react';
 
-const badges = [
-  { icon: '🇲🇽', text: 'Diseñado en México' },
-  { icon: '⚡', text: 'Envío Express en 48h' },
-  { icon: '🔒', text: 'Pago 100% Seguro' },
+const items = [
+  { icon: Truck, title: 'Envío gratis', sub: 'En pedidos +$1,200 MXN' },
+  { icon: RotateCcw, title: '30 días de cambios', sub: 'Cambia tu talla sin costo' },
+  { icon: ShieldCheck, title: 'Pago 100% seguro', sub: 'Compra protegida' },
 ];
 
 export default function TrustBar() {
   return (
-    <div className="bg-[#111111] border-y border-[#2A2A2A]">
-      <div className="max-w-7xl mx-auto px-4 overflow-hidden">
-        <div className="flex animate-[marquee_20s_linear_infinite] md:animate-none md:justify-center md:gap-16 gap-12 py-4">
-          {[...badges, ...badges].map((badge, i) => (
-            <div key={i} className="flex items-center gap-3 flex-shrink-0">
-              <span className="text-xl">{badge.icon}</span>
-              <span className="text-sm font-heading tracking-wider text-[#A0A0A0] whitespace-nowrap">{badge.text}</span>
+    <div className="bg-[#0A0A0A] border-y border-white/[0.07]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.07]">
+          {items.map((it) => (
+            <div key={it.title} className="flex items-center justify-center gap-3.5 py-6">
+              <it.icon size={22} strokeWidth={1.5} className="text-[#E8003A] flex-shrink-0" />
+              <div className="leading-tight">
+                <p className="font-heading text-[13px] tracking-[0.12em] text-white uppercase">{it.title}</p>
+                <p className="text-xs text-[#7A7A7A] mt-0.5">{it.sub}</p>
+              </div>
             </div>
           ))}
         </div>

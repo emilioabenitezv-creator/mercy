@@ -65,9 +65,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="text-center p-8 bg-[#111111] border border-[#2A2A2A] rounded-lg"
+                className="text-center p-8 surface rounded-xl"
               >
-                <div className="w-14 h-14 mx-auto mb-4 bg-[#E8003A]/10 rounded-lg flex items-center justify-center">
+                <div className="w-14 h-14 mx-auto mb-4 bg-[#E8003A]/10 rounded-xl flex items-center justify-center">
                   <v.icon size={24} className="text-[#E8003A]" />
                 </div>
                 <h3 className="font-heading text-sm tracking-[0.15em] text-white mb-3">{v.title}</h3>
@@ -83,14 +83,8 @@ export default function About() {
             ¿Listo Para Entrenar Con Mercy?
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/rashguards"
-              className="px-8 py-4 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] text-center transition-colors">
-              VER RASHGUARDS
-            </Link>
-            <Link to="/shorts"
-              className="px-8 py-4 border border-white text-white font-heading text-sm tracking-[0.15em] text-center hover:bg-white hover:text-black transition-all">
-              VER SHORTS
-            </Link>
+            <Link to="/rashguards" className="btn-primary">Ver Rashguards</Link>
+            <Link to="/shorts" className="btn-secondary">Ver Shorts</Link>
           </div>
         </div>
       </div>

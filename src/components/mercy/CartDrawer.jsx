@@ -26,9 +26,9 @@ export default function CartDrawer() {
           <motion.div
             initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-[#0A0A0A] border-l border-[#2A2A2A] flex flex-col"
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-[#0A0A0A] border-l border-white/[0.07] flex flex-col"
           >
-            <div className="flex items-center justify-between p-5 border-b border-[#2A2A2A]">
+            <div className="flex items-center justify-between p-5 border-b border-white/[0.07]">
               <h2 className="font-heading text-xl tracking-wider text-white">TU CARRITO</h2>
               <button onClick={() => setIsCartOpen(false)} aria-label="Cerrar carrito" className="text-[#A0A0A0] hover:text-white">
                 <X size={24} />
@@ -36,7 +36,7 @@ export default function CartDrawer() {
             </div>
 
             {/* Free shipping bar */}
-            <div className="px-5 py-3 border-b border-[#2A2A2A]">
+            <div className="px-5 py-3 border-b border-white/[0.07]">
               {hasFreeShipping ? (
                 <p className="text-sm text-green-400 font-medium">✓ ¡Tienes envío gratis!</p>
               ) : (
@@ -96,17 +96,17 @@ export default function CartDrawer() {
             </div>
 
             {items.length > 0 && (
-              <div className="border-t border-[#2A2A2A] p-5 space-y-4">
+              <div className="border-t border-white/[0.07] p-5 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="font-heading tracking-wider text-[#A0A0A0]">SUBTOTAL</span>
                   <span className="text-xl font-mono font-bold text-white">${subtotal.toLocaleString()} MXN</span>
                 </div>
-                <button onClick={goToCheckout} className="w-full py-4 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors">
-                  PROCEDER AL PAGO
+                <button onClick={goToCheckout} className="w-full py-4 rounded-lg bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.18em] uppercase transition-all duration-300">
+                  Proceder al pago
                 </button>
                 <button onClick={() => setIsCartOpen(false)}
-                  className="w-full py-3 border border-white text-white font-heading text-sm tracking-[0.15em] hover:bg-white hover:text-black transition-all">
-                  SEGUIR COMPRANDO
+                  className="w-full py-3 rounded-lg border border-white/25 text-white font-heading text-sm tracking-[0.18em] uppercase hover:bg-white hover:text-black transition-all duration-300">
+                  Seguir comprando
                 </button>
               </div>
             )}

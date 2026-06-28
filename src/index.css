@@ -53,12 +53,24 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background: #E8003A;
+    color: #ffffff;
   }
 
   ::-webkit-scrollbar {
@@ -73,6 +85,26 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #E8003A;
+  }
+}
+
+@layer components {
+  /* Refined "kicker" label used above section titles */
+  .eyebrow {
+    @apply font-heading text-[11px] font-medium tracking-[0.32em] uppercase text-[#E8003A];
+  }
+
+  /* Unified premium button system */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#E8003A] text-white font-heading text-sm tracking-[0.18em] uppercase transition-all duration-300 hover:bg-[#C0002E];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-white/25 text-white font-heading text-sm tracking-[0.18em] uppercase transition-all duration-300 hover:bg-white hover:text-black;
+  }
+
+  /* Elevated surface for cards */
+  .surface {
+    @apply bg-[#0F0F0F] border border-white/[0.07];
   }
 }
 

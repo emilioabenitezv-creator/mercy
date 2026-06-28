@@ -26,10 +26,10 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#2A2A2A]' : 'bg-transparent'
+        scrolled ? 'bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/[0.07]' : 'bg-transparent'
       }`}>
         {/* Announcement bar */}
-        <div className="bg-[#E8003A] text-white text-center text-[11px] sm:text-xs font-heading tracking-[0.1em] py-2 px-4">
+        <div className="bg-[#E8003A] text-white text-center text-[11px] sm:text-xs font-heading tracking-[0.14em] py-2.5 px-4">
           ENVÍO GRATIS DESDE ${SITE.freeShippingThreshold.toLocaleString()} · 10% OFF EN TU 1ER PEDIDO CON <span className="font-bold">BIENVENIDO10</span>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

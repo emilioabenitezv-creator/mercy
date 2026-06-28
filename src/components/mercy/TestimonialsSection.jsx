@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import StarRating from './StarRating';
+import SectionHeading from './SectionHeading';
 
 const testimonials = [
   {
@@ -38,22 +39,18 @@ export default function TestimonialsSection() {
   const t = testimonials[current];
 
   return (
-    <section className="py-20 bg-[#111111]">
+    <section className="py-24 md:py-32 bg-[#0C0C0C]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-[0.05em] text-white uppercase">
-            Lo Que Dicen <span className="text-[#E8003A]">Nuestros Clientes</span>
-          </h2>
-          <div className="w-16 h-1 bg-[#E8003A] mx-auto mt-4" />
-        </div>
+        <SectionHeading kicker="Reseñas verificadas" title="Lo Que Dicen" accent="Nuestros Clientes" />
 
-        <div className="relative bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg p-8 md:p-12 text-center">
-          <div className="mb-4 flex justify-center">
+        <div className="relative surface rounded-2xl p-8 md:p-14 text-center">
+          <Quote size={40} className="text-[#E8003A]/25 mx-auto mb-6" />
+          <div className="mb-5 flex justify-center">
             <StarRating rating={t.rating} size={20} />
           </div>
-          <p className="text-lg text-[#F5F5F5] leading-relaxed italic mb-8">"{t.text}"</p>
-          <p className="font-heading tracking-wider text-white">{t.name}</p>
-          <p className="text-sm text-[#A0A0A0]">{t.city}</p>
+          <p className="text-xl md:text-2xl text-[#F0F0F0] leading-relaxed font-light mb-8">"{t.text}"</p>
+          <p className="font-heading tracking-[0.08em] text-white">{t.name}</p>
+          <p className="text-sm text-[#8A8A8A] mt-0.5">{t.city}</p>
 
           <div className="flex justify-center gap-4 mt-8">
             <button onClick={prev} aria-label="Testimonio anterior"
