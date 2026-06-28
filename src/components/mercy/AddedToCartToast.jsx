@@ -13,7 +13,7 @@ export default function AddedToCartToast() {
           initial={{ y: -80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -80, opacity: 0 }}
-          className="fixed top-24 right-4 z-50 bg-[#111111] border border-[#2A2A2A] rounded-lg p-4 shadow-2xl flex items-center gap-3 max-w-sm"
+          className="fixed top-24 right-4 z-50 bg-[#111111] border border-white/[0.07] rounded-lg p-4 shadow-2xl flex items-center gap-3 max-w-sm"
         >
           <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
             <Check size={16} className="text-green-400" />

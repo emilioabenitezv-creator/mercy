@@ -60,7 +60,7 @@ export default function ProductDetail() {
   if (loading) {
     return (
       <div className="bg-[#0A0A0A] min-h-screen pt-20 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#2A2A2A] border-t-[#E8003A] rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-white/[0.07] border-t-[#E8003A] rounded-full animate-spin" />
       </div>
     );
   }
@@ -133,9 +133,9 @@ export default function ProductDetail() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center gap-2 text-sm">
           <Link to="/" className="text-[#A0A0A0] hover:text-white transition-colors">Inicio</Link>
-          <ChevronRight size={14} className="text-[#2A2A2A]" />
+          <ChevronRight size={14} className="text-[#5A5A5A]" />
           <Link to={catPath} className="text-[#A0A0A0] hover:text-white transition-colors">{catLabel}</Link>
-          <ChevronRight size={14} className="text-[#2A2A2A]" />
+          <ChevronRight size={14} className="text-[#5A5A5A]" />
           <span className="text-white">{product.name}</span>
         </div>
       </div>
@@ -145,11 +145,11 @@ export default function ProductDetail() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {/* Images */}
           <div className="space-y-4">
-            <div className="aspect-[4/5] bg-[#111111] rounded-lg overflow-hidden border border-[#2A2A2A]">
+            <div className="aspect-[4/5] bg-[#111111] rounded-lg overflow-hidden border border-white/[0.07]">
               <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
             </div>
             {product.image_url_2 && (
-              <div className="aspect-[4/5] bg-[#111111] rounded-lg overflow-hidden border border-[#2A2A2A]">
+              <div className="aspect-[4/5] bg-[#111111] rounded-lg overflow-hidden border border-white/[0.07]">
                 <img src={product.image_url_2} alt={product.name} className="w-full h-full object-cover" />
               </div>
             )}
@@ -188,12 +188,12 @@ export default function ProductDetail() {
                   return (
                     <button key={size}
                       onClick={() => available ? setSelectedSize(size) : setNotifyModal({ open: true, size })}
-                      className={`relative w-14 h-12 border font-heading text-sm tracking-wider transition-all ${
+                      className={`relative w-14 h-12 rounded-lg border font-heading text-sm tracking-wider transition-all ${
                         !available
-                          ? 'border-[#2A2A2A] text-[#2A2A2A] line-through cursor-pointer'
+                          ? 'border-white/[0.06] text-[#5A5A5A] line-through cursor-pointer'
                           : selected
                             ? 'border-[#E8003A] bg-[#E8003A] text-white'
-                            : 'border-[#2A2A2A] text-[#A0A0A0] hover:border-white hover:text-white'
+                            : 'border-white/[0.14] text-[#C5C5C5] hover:border-white hover:text-white'
                       }`}
                       title={!available ? 'Sin stock — click para notificación' : ''}
                     >
@@ -216,7 +216,7 @@ export default function ProductDetail() {
             {/* Quantity */}
             <div className="mt-6">
               <p className="font-heading text-sm tracking-wider text-white mb-3">CANTIDAD</p>
-              <div className="flex items-center gap-3 bg-[#111111] border border-[#2A2A2A] rounded w-fit">
+              <div className="flex items-center gap-3 bg-[#111111] border border-white/[0.07] rounded w-fit">
                 <button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Disminuir cantidad"
                   className="p-3 text-[#A0A0A0] hover:text-white"><Minus size={16} /></button>
                 <span className="font-mono text-white w-8 text-center" aria-live="polite">{quantity}</span>
@@ -240,7 +240,7 @@ export default function ProductDetail() {
             </div>
 
             {/* Trust / reassurance block */}
-            <div className="mt-6 grid grid-cols-2 gap-3 p-4 bg-[#111111] border border-[#2A2A2A] rounded-lg">
+            <div className="mt-6 grid grid-cols-2 gap-3 p-4 bg-[#111111] border border-white/[0.07] rounded-lg">
               <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><Truck size={15} className="text-[#E8003A] flex-shrink-0" /> Envío gratis +${SITE.freeShippingThreshold.toLocaleString()}</p>
               <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><Zap size={15} className="text-[#E8003A] flex-shrink-0" /> Entrega 3–5 días</p>
               <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><RotateCcw size={15} className="text-[#E8003A] flex-shrink-0" /> 30 días de cambios</p>
@@ -249,7 +249,7 @@ export default function ProductDetail() {
 
             {/* Tabs */}
             <div className="mt-10">
-              <div className="flex gap-0 border-b border-[#2A2A2A] overflow-x-auto">
+              <div className="flex gap-0 border-b border-white/[0.07] overflow-x-auto">
                 {tabs.map(tab => (
                   <button key={tab.key} onClick={() => setActiveTab(tab.key)}
                     className={`px-4 py-3 font-heading text-xs tracking-wider whitespace-nowrap transition-all border-b-2 ${
@@ -281,7 +281,7 @@ export default function ProductDetail() {
                     <div>
                       <h4 className="font-heading text-sm tracking-wider text-white mb-3">COMPOSICIÓN</h4>
                       <table className="w-full text-sm">
-                        <tbody className="divide-y divide-[#2A2A2A]">
+                        <tbody className="divide-y divide-white/[0.07]">
                           <tr><td className="py-2 text-[#A0A0A0]">Material</td><td className="py-2 text-white text-right">{product.materials || '80% Poliéster, 20% Spandex'}</td></tr>
                           <tr><td className="py-2 text-[#A0A0A0]">Tecnología</td><td className="py-2 text-white text-right">4-Way Stretch</td></tr>
                           <tr><td className="py-2 text-[#A0A0A0]">Protección UV</td><td className="py-2 text-white text-right">UPF 50+</td></tr>
@@ -299,14 +299,14 @@ export default function ProductDetail() {
                   <div>
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="border-b border-[#2A2A2A]">
+                        <tr className="border-b border-white/[0.07]">
                           <th className="py-2 text-left font-heading text-xs tracking-wider text-[#A0A0A0]">TALLA</th>
                           <th className="py-2 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">PECHO (cm)</th>
                           {product.category === 'rashguard' && <th className="py-2 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">CINTURA (cm)</th>}
                           <th className="py-2 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">{product.category === 'shorts' ? 'CADERA (cm)' : 'CADERA (cm)'}</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-[#2A2A2A]">
+                      <tbody className="divide-y divide-white/[0.07]">
                         {sizeChart.map(row => (
                           <tr key={row[0]}>
                             {row.map((cell, i) => (
@@ -344,7 +344,7 @@ export default function ProductDetail() {
       </div>
 
       {/* Sticky mobile add-to-cart bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0A0A]/95 backdrop-blur-md border-t border-[#2A2A2A] px-4 py-3 flex items-center gap-3">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0A0A]/95 backdrop-blur-md border-t border-white/[0.07] px-4 py-3 flex items-center gap-3">
         <div className="flex flex-col leading-tight">
           <span className="font-mono text-lg font-bold text-white">${product.price.toLocaleString()}</span>
           {selectedSize

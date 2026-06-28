@@ -25,14 +25,16 @@ export default function Wishlist() {
   return (
     <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="font-display text-4xl font-bold tracking-[0.05em] text-white uppercase text-center">
-          Mis <span className="text-[#E8003A]">Favoritos</span>
-        </h1>
-        <div className="w-16 h-1 bg-[#E8003A] mx-auto mt-4 mb-12" />
+        <div className="text-center mb-12">
+          <span className="eyebrow">Tu selección</span>
+          <h1 className="mt-4 font-display text-4xl font-bold tracking-[0.02em] text-white uppercase">
+            Mis <span className="text-[#E8003A]">Favoritos</span>
+          </h1>
+        </div>
 
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="w-8 h-8 border-2 border-[#2A2A2A] border-t-[#E8003A] rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-white/[0.1] border-t-[#E8003A] rounded-full animate-spin" />
           </div>
         ) : products.length === 0 ? (
           <div className="text-center py-20">
@@ -44,7 +46,7 @@ export default function Wishlist() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-7">
             {products.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         )}

@@ -68,39 +68,45 @@ export default function Catalog() {
         image={headerImage}
       />
       {/* Category header */}
-      <div className="relative h-48 md:h-64 overflow-hidden">
+      <div className="relative h-56 md:h-80 overflow-hidden">
         <img src={headerImage} alt={title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-[#0A0A0A]/70" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-[0.1em] text-white">{title}</h1>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/55 to-[#0A0A0A]/30" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <span className="eyebrow mb-3">{category === 'shorts' ? 'MMA · Grappling' : 'BJJ · No-Gi'}</span>
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-[0.08em] text-white uppercase leading-none">{title}</h1>
+          <p className="mt-4 text-sm text-[#9A9A9A] max-w-md">
+            {category === 'shorts'
+              ? 'Ajuste anatómico y libertad total de movimiento.'
+              : 'Compresión 4-way stretch · UPF 50+ · ediciones limitadas.'}
+          </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
         {/* Filters */}
-        <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-[#2A2A2A]">
+        <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-white/[0.07]">
           <div className="flex flex-wrap gap-2">
             <button onClick={() => setSizeFilter('')}
-              className={`px-3 py-1.5 text-xs font-heading tracking-wider border rounded transition-all ${
-                !sizeFilter ? 'bg-white text-black border-white' : 'border-[#2A2A2A] text-[#A0A0A0] hover:border-white hover:text-white'
+              className={`px-3.5 py-1.5 text-xs font-heading tracking-[0.1em] border rounded-lg transition-all ${
+                !sizeFilter ? 'bg-white text-black border-white' : 'border-white/[0.12] text-[#A0A0A0] hover:border-white hover:text-white'
               }`}>TODAS</button>
             {ALL_SIZES.map(size => (
               <button key={size} onClick={() => setSizeFilter(sizeFilter === size ? '' : size)}
-                className={`px-3 py-1.5 text-xs font-heading tracking-wider border rounded transition-all ${
-                  sizeFilter === size ? 'bg-white text-black border-white' : 'border-[#2A2A2A] text-[#A0A0A0] hover:border-white hover:text-white'
+                className={`px-3.5 py-1.5 text-xs font-heading tracking-[0.1em] border rounded-lg transition-all ${
+                  sizeFilter === size ? 'bg-white text-black border-white' : 'border-white/[0.12] text-[#A0A0A0] hover:border-white hover:text-white'
                 }`}>{size}</button>
             ))}
           </div>
 
           <div className="flex gap-2 ml-auto">
             <select value={stockFilter} onChange={e => setStockFilter(e.target.value)}
-              className="px-3 py-1.5 text-xs font-heading tracking-wider bg-[#111111] border border-[#2A2A2A] rounded text-[#A0A0A0] focus:outline-none focus:border-[#E8003A]">
+              className="px-3.5 py-1.5 text-xs font-heading tracking-[0.1em] bg-[#0F0F0F] border border-white/[0.12] rounded-lg text-[#A0A0A0] focus:outline-none focus:border-[#E8003A] transition-colors">
               <option value="all">Disponibilidad</option>
               <option value="instock">En Stock</option>
               <option value="outofstock">Agotado</option>
             </select>
             <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-              className="px-3 py-1.5 text-xs font-heading tracking-wider bg-[#111111] border border-[#2A2A2A] rounded text-[#A0A0A0] focus:outline-none focus:border-[#E8003A]">
+              className="px-3.5 py-1.5 text-xs font-heading tracking-[0.1em] bg-[#0F0F0F] border border-white/[0.12] rounded-lg text-[#A0A0A0] focus:outline-none focus:border-[#E8003A] transition-colors">
               <option value="bestseller">Más Vendido</option>
               <option value="price-low">Precio Menor</option>
               <option value="price-high">Precio Mayor</option>
@@ -111,19 +117,22 @@ export default function Catalog() {
 
         {/* Grid */}
         {loading ? (
-          <div className="flex justify-center py-20">
-            <div className="w-8 h-8 border-2 border-[#2A2A2A] border-t-[#E8003A] rounded-full animate-spin" />
+          <div className="flex justify-center py-24">
+            <div className="w-8 h-8 border-2 border-white/[0.1] border-t-[#E8003A] rounded-full animate-spin" />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-[#A0A0A0] font-heading tracking-wider">No se encontraron productos</p>
+          <div className="text-center py-24">
+            <p className="text-[#9A9A9A] font-heading tracking-wider">No se encontraron productos</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {filtered.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <>
+            <p className="text-xs text-[#7A7A7A] font-mono mb-6">{filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-7">
+              {filtered.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>

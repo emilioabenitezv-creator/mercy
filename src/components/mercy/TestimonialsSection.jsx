@@ -54,17 +54,17 @@ export default function TestimonialsSection() {
 
           <div className="flex justify-center gap-4 mt-8">
             <button onClick={prev} aria-label="Testimonio anterior"
-              className="w-10 h-10 border border-[#2A2A2A] rounded flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-white transition-all">
+              className="w-10 h-10 border border-white/[0.12] rounded-lg flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-white transition-all">
               <ChevronLeft size={18} />
             </button>
             <div className="flex items-center gap-2">
               {testimonials.map((_, i) => (
                 <button key={i} onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-[#E8003A] w-6' : 'bg-[#2A2A2A]'}`} />
+                  className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-[#E8003A] w-6' : 'bg-white/[0.18]'}`} />
               ))}
             </div>
             <button onClick={next} aria-label="Siguiente testimonio"
-              className="w-10 h-10 border border-[#2A2A2A] rounded flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-white transition-all">
+              className="w-10 h-10 border border-white/[0.12] rounded-lg flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-white transition-all">
               <ChevronRight size={18} />
             </button>
           </div>

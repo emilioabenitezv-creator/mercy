@@ -20,10 +20,12 @@ export default function Contact() {
         path="/contacto"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-[0.05em] text-white uppercase text-center">
-          Hablemos
-        </h1>
-        <div className="w-16 h-1 bg-[#E8003A] mx-auto mt-4 mb-4" />
+        <div className="text-center">
+          <span className="eyebrow">Estamos para ayudarte</span>
+          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-[0.02em] text-white uppercase">
+            Hablemos
+          </h1>
+        </div>
         <p className="text-center text-[#A0A0A0] mb-12 max-w-lg mx-auto">
           Estamos para ayudarte con tallas, envíos o cualquier duda. Respondemos en menos de 24 h hábiles.
         </p>
@@ -32,7 +34,7 @@ export default function Contact() {
           {/* Direct channels */}
           <div className="space-y-4">
             <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 bg-[#111111] border border-[#2A2A2A] rounded-lg hover:border-[#E8003A]/50 transition-all">
+              className="flex items-center gap-4 p-5 surface rounded-xl hover:border-[#E8003A]/50 transition-all">
               <MessageCircle className="text-[#E8003A]" size={24} />
               <div>
                 <p className="font-heading text-sm tracking-wider text-white">WHATSAPP</p>
@@ -40,7 +42,7 @@ export default function Contact() {
               </div>
             </a>
             <a href={`mailto:${SITE.email}`}
-              className="flex items-center gap-4 p-5 bg-[#111111] border border-[#2A2A2A] rounded-lg hover:border-[#E8003A]/50 transition-all">
+              className="flex items-center gap-4 p-5 surface rounded-xl hover:border-[#E8003A]/50 transition-all">
               <Mail className="text-[#E8003A]" size={24} />
               <div>
                 <p className="font-heading text-sm tracking-wider text-white">CORREO</p>
@@ -48,14 +50,14 @@ export default function Contact() {
               </div>
             </a>
             <a href={SITE.instagram} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-4 p-5 bg-[#111111] border border-[#2A2A2A] rounded-lg hover:border-[#E8003A]/50 transition-all">
+              className="flex items-center gap-4 p-5 surface rounded-xl hover:border-[#E8003A]/50 transition-all">
               <Instagram className="text-[#E8003A]" size={24} />
               <div>
                 <p className="font-heading text-sm tracking-wider text-white">INSTAGRAM</p>
                 <p className="text-sm text-[#A0A0A0]">@mercyfit</p>
               </div>
             </a>
-            <div className="flex items-center gap-4 p-5 bg-[#111111] border border-[#2A2A2A] rounded-lg">
+            <div className="flex items-center gap-4 p-5 surface rounded-xl">
               <Clock className="text-[#A0A0A0]" size={24} />
               <div>
                 <p className="font-heading text-sm tracking-wider text-white">HORARIO</p>
@@ -68,13 +70,13 @@ export default function Contact() {
           <form onSubmit={openWhatsApp} className="space-y-4">
             <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="Tu nombre" required
-              className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
+              className="w-full px-4 py-3 bg-[#111111] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
             <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
               placeholder="Tu correo" required
-              className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
+              className="w-full px-4 py-3 bg-[#111111] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
             <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
               placeholder="¿En qué te ayudamos?" rows={5} required
-              className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A] resize-none" />
+              className="w-full px-4 py-3 bg-[#111111] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A] resize-none" />
             <button type="submit"
               className="w-full py-4 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors">
               ENVIAR POR WHATSAPP

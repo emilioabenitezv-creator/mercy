@@ -20,15 +20,17 @@ export default function Shipping() {
         path="/envios-y-devoluciones"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-[0.05em] text-white uppercase text-center">
-          Envíos y <span className="text-[#E8003A]">Devoluciones</span>
-        </h1>
-        <div className="w-16 h-1 bg-[#E8003A] mx-auto mt-4 mb-12" />
+        <div className="text-center mb-12">
+          <span className="eyebrow">Compra sin riesgo</span>
+          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-[0.02em] text-white uppercase">
+            Envíos y <span className="text-[#E8003A]">Devoluciones</span>
+          </h1>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
           {cards.map((c) => (
-            <div key={c.title} className="p-6 bg-[#111111] border border-[#2A2A2A] rounded-lg">
-              <div className="w-12 h-12 mb-4 bg-[#E8003A]/10 rounded-lg flex items-center justify-center">
+            <div key={c.title} className="p-6 surface rounded-xl">
+              <div className="w-12 h-12 mb-4 bg-[#E8003A]/10 rounded-xl flex items-center justify-center">
                 <c.icon size={22} className="text-[#E8003A]" />
               </div>
               <h3 className="font-heading text-sm tracking-[0.15em] text-white mb-2">{c.title}</h3>

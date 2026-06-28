@@ -27,13 +27,15 @@ export default function SizeGuide() {
         path="/guia-de-tallas"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-[0.05em] text-white uppercase text-center">
-          Guía de <span className="text-[#E8003A]">Tallas</span>
-        </h1>
-        <div className="w-16 h-1 bg-[#E8003A] mx-auto mt-4" />
+        <div className="text-center">
+          <span className="eyebrow">Encuentra tu ajuste</span>
+          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-[0.02em] text-white uppercase">
+            Guía de <span className="text-[#E8003A]">Tallas</span>
+          </h1>
+        </div>
 
         {/* How to measure */}
-        <div className="mt-12 p-6 bg-[#111111] border border-[#2A2A2A] rounded-lg">
+        <div className="mt-12 p-6 bg-[#111111] border border-white/[0.07] rounded-lg">
           <div className="flex items-center gap-3 mb-4">
             <Ruler className="text-[#E8003A]" size={24} />
             <h2 className="font-heading text-lg tracking-wider text-white">CÓMO MEDIRTE</h2>
@@ -52,16 +54,16 @@ export default function SizeGuide() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#2A2A2A]">
+                <tr className="border-b border-white/[0.07]">
                   <th className="py-3 text-left font-heading text-xs tracking-wider text-[#A0A0A0]">TALLA</th>
                   <th className="py-3 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">PECHO (cm)</th>
                   <th className="py-3 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">CINTURA (cm)</th>
                   <th className="py-3 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">CADERA (cm)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2A2A2A]">
+              <tbody className="divide-y divide-white/[0.07]">
                 {rashguardSizes.map(row => (
-                  <tr key={row[0]} className="hover:bg-[#111111] transition-colors">
+                  <tr key={row[0]} className="hover:bg-white/[0.02] transition-colors">
                     <td className="py-3 text-white font-mono font-bold">{row[0]}</td>
                     <td className="py-3 text-center text-[#A0A0A0] font-mono">{row[1]}</td>
                     <td className="py-3 text-center text-[#A0A0A0] font-mono">{row[2]}</td>
@@ -79,15 +81,15 @@ export default function SizeGuide() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#2A2A2A]">
+                <tr className="border-b border-white/[0.07]">
                   <th className="py-3 text-left font-heading text-xs tracking-wider text-[#A0A0A0]">TALLA</th>
                   <th className="py-3 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">CINTURA (cm)</th>
                   <th className="py-3 text-center font-heading text-xs tracking-wider text-[#A0A0A0]">CADERA (cm)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2A2A2A]">
+              <tbody className="divide-y divide-white/[0.07]">
                 {shortsSizes.map(row => (
-                  <tr key={row[0]} className="hover:bg-[#111111] transition-colors">
+                  <tr key={row[0]} className="hover:bg-white/[0.02] transition-colors">
                     <td className="py-3 text-white font-mono font-bold">{row[0]}</td>
                     <td className="py-3 text-center text-[#A0A0A0] font-mono">{row[1]}</td>
                     <td className="py-3 text-center text-[#A0A0A0] font-mono">{row[2]}</td>

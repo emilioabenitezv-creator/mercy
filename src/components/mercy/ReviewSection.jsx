@@ -36,7 +36,7 @@ export default function ReviewSection({ productId }) {
     setSubmitting(false);
   }
 
-  if (loading) return <div className="w-6 h-6 border-2 border-[#2A2A2A] border-t-[#E8003A] rounded-full animate-spin mx-auto" />;
+  if (loading) return <div className="w-6 h-6 border-2 border-white/[0.07] border-t-[#E8003A] rounded-full animate-spin mx-auto" />;
 
   return (
     <div>
@@ -68,14 +68,14 @@ export default function ReviewSection({ productId }) {
       </button>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="mb-8 p-6 bg-[#111111] border border-[#2A2A2A] rounded-lg space-y-4">
+        <form onSubmit={handleSubmit} className="mb-8 p-6 bg-[#111111] border border-white/[0.07] rounded-lg space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input value={form.author_name} onChange={e => setForm({ ...form, author_name: e.target.value })}
               placeholder="Tu nombre *" required
-              className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
+              className="px-4 py-3 bg-[#0A0A0A] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
             <input value={form.author_city} onChange={e => setForm({ ...form, author_city: e.target.value })}
               placeholder="Ciudad"
-              className="px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
+              className="px-4 py-3 bg-[#0A0A0A] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-[#A0A0A0]">Rating:</span>
@@ -89,10 +89,10 @@ export default function ReviewSection({ productId }) {
           </div>
           <input value={form.size_purchased} onChange={e => setForm({ ...form, size_purchased: e.target.value })}
             placeholder="Talla comprada (ej: M)"
-            className="w-full px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
+            className="w-full px-4 py-3 bg-[#0A0A0A] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
           <textarea value={form.text} onChange={e => setForm({ ...form, text: e.target.value })}
             placeholder="Tu reseña *" required rows={3}
-            className="w-full px-4 py-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A] resize-none" />
+            className="w-full px-4 py-3 bg-[#0A0A0A] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A] resize-none" />
           <button type="submit" disabled={submitting}
             className="px-8 py-3 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-xs tracking-wider transition-colors disabled:opacity-50">
             {submitting ? 'ENVIANDO...' : 'ENVIAR RESEÑA'}
@@ -103,7 +103,7 @@ export default function ReviewSection({ productId }) {
       {/* Reviews list */}
       <div className="space-y-4">
         {reviews.map(review => (
-          <div key={review.id} className="p-4 bg-[#111111] border border-[#2A2A2A] rounded-lg">
+          <div key={review.id} className="p-4 bg-[#111111] border border-white/[0.07] rounded-lg">
             <div className="flex items-start justify-between">
               <div>
                 <p className="font-heading text-sm tracking-wider text-white">{review.author_name}</p>
@@ -115,7 +115,7 @@ export default function ReviewSection({ productId }) {
               <span className="text-xs text-[#A0A0A0] font-mono">{moment(review.created_date).format('DD/MM/YY')}</span>
             </div>
             <p className="mt-3 text-sm text-[#A0A0A0] leading-relaxed">{review.text}</p>
-            {review.author_city && <p className="mt-2 text-xs text-[#2A2A2A]">{review.author_city}</p>}
+            {review.author_city && <p className="mt-2 text-xs text-[#6A6A6A]">{review.author_city}</p>}
           </div>
         ))}
         {reviews.length === 0 && (

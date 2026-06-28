@@ -23,9 +23,10 @@ export default function About() {
       {/* Hero */}
       <div className="relative h-72 md:h-96 overflow-hidden">
         <img src={ABOUT_IMAGE} alt="Mercy tatami" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-[#0A0A0A]/60" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-[0.1em] text-white">NOSOTROS</h1>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/55 to-[#0A0A0A]/30" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <span className="eyebrow mb-3">Nacidos del tatami mexicano</span>
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-[0.08em] text-white uppercase">NOSOTROS</h1>
         </div>
       </div>
 

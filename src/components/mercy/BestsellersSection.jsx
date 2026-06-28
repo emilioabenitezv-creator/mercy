@@ -21,7 +21,7 @@ export default function BestsellersSection() {
       <section className="py-24 md:py-32 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center">
-            <div className="w-8 h-8 border-2 border-[#2A2A2A] border-t-[#E8003A] rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-white/[0.1] border-t-[#E8003A] rounded-full animate-spin" />
           </div>
         </div>
       </section>

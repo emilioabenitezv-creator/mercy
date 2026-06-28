@@ -11,7 +11,8 @@ export default function Privacy() {
         path="/privacidad"
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-[0.05em] text-white uppercase mb-2">
+        <span className="eyebrow">Tu confianza</span>
+        <h1 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-[0.02em] text-white uppercase mb-2">
           Aviso de <span className="text-[#E8003A]">Privacidad</span>
         </h1>
         <p className="text-xs text-[#A0A0A0] mb-10">Última actualización: junio 2026</p>

@@ -104,7 +104,7 @@ export default function Checkout() {
     <div>
       <label htmlFor={name} className="block text-xs font-heading tracking-wider text-[#A0A0A0] mb-1.5">{label}</label>
       <input id={name} value={form[name]} onChange={(e) => setForm({ ...form, [name]: e.target.value })}
-        className="w-full px-4 py-3 bg-[#111111] border border-[#2A2A2A] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]"
+        className="w-full px-4 py-3 bg-[#111111] border border-white/[0.07] rounded text-white text-sm placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]"
         {...props} />
     </div>
   );
@@ -113,7 +113,8 @@ export default function Checkout() {
     <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
       <Seo title="Checkout — MERCY" description="Finaliza tu compra de forma segura en MERCY." path="/checkout" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-[0.05em] text-white uppercase mb-8">Finalizar Compra</h1>
+        <span className="eyebrow">Casi listo</span>
+        <h1 className="mt-3 mb-8 font-display text-3xl sm:text-4xl font-bold tracking-[0.02em] text-white uppercase">Finalizar Compra</h1>
 
         <form onSubmit={placeOrder} className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
           {/* Shipping + payment */}
@@ -138,7 +139,7 @@ export default function Checkout() {
               <div className="space-y-2">
                 {PAYMENT_METHODS.map((m) => (
                   <label key={m.id}
-                    className={`flex items-center gap-3 p-4 border rounded cursor-pointer transition-all ${payment === m.id ? 'border-[#E8003A] bg-[#E8003A]/5' : 'border-[#2A2A2A] hover:border-white/40'}`}>
+                    className={`flex items-center gap-3 p-4 border rounded cursor-pointer transition-all ${payment === m.id ? 'border-[#E8003A] bg-[#E8003A]/5' : 'border-white/[0.07] hover:border-white/40'}`}>
                     <input type="radio" name="payment" value={m.id} checked={payment === m.id}
                       onChange={() => setPayment(m.id)} className="accent-[#E8003A]" />
                     <span className="text-sm text-white">{m.label}</span>
@@ -153,7 +154,7 @@ export default function Checkout() {
 
           {/* Order summary */}
           <aside className="lg:sticky lg:top-[130px] lg:self-start">
-            <div className="bg-[#111111] border border-[#2A2A2A] rounded-lg p-5 space-y-4">
+            <div className="bg-[#111111] border border-white/[0.07] rounded-lg p-5 space-y-4">
               <h2 className="font-heading text-sm tracking-[0.15em] text-white">TU PEDIDO</h2>
               <div className="space-y-3 max-h-64 overflow-y-auto">
                 {items.map((i) => (
@@ -169,9 +170,9 @@ export default function Checkout() {
               </div>
 
               {/* Discount */}
-              <div className="flex gap-2 pt-2 border-t border-[#2A2A2A]">
+              <div className="flex gap-2 pt-2 border-t border-white/[0.07]">
                 <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Código de descuento"
-                  className="flex-1 px-3 py-2 bg-[#0A0A0A] border border-[#2A2A2A] rounded text-white text-xs placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
+                  className="flex-1 px-3 py-2 bg-[#0A0A0A] border border-white/[0.07] rounded text-white text-xs placeholder-[#A0A0A0] focus:outline-none focus:border-[#E8003A]" />
                 <button type="button" onClick={applyCode}
                   className="px-4 py-2 border border-white text-white font-heading text-xs tracking-wider hover:bg-white hover:text-black transition-all">
                   APLICAR
@@ -180,7 +181,7 @@ export default function Checkout() {
               {codeError && <p className="text-xs text-[#E8003A]">{codeError}</p>}
               {appliedCode && <p className="text-xs text-green-400">✓ Código {appliedCode} aplicado (−{discountPct}%)</p>}
 
-              <div className="space-y-2 pt-2 border-t border-[#2A2A2A] text-sm">
+              <div className="space-y-2 pt-2 border-t border-white/[0.07] text-sm">
                 <div className="flex justify-between text-[#A0A0A0]"><span>Subtotal</span><span className="font-mono text-white">${subtotal.toLocaleString()}</span></div>
                 {discount > 0 && <div className="flex justify-between text-green-400"><span>Descuento</span><span className="font-mono">−${discount.toLocaleString()}</span></div>}
                 <div className="flex justify-between text-[#A0A0A0]">
@@ -190,7 +191,7 @@ export default function Checkout() {
                 {!hasFreeShipping && shipping > 0 && (
                   <p className="text-xs text-[#A0A0A0] flex items-center gap-1.5"><Truck size={12} /> Agrega ${(FREE_SHIPPING_THRESHOLD - discountedSubtotal).toLocaleString()} más para envío gratis</p>
                 )}
-                <div className="flex justify-between items-center pt-2 border-t border-[#2A2A2A]">
+                <div className="flex justify-between items-center pt-2 border-t border-white/[0.07]">
                   <span className="font-heading tracking-wider text-white">TOTAL</span>
                   <span className="text-xl font-mono font-bold text-white">${total.toLocaleString()} <span className="text-xs text-[#A0A0A0]">MXN</span></span>
                 </div>
