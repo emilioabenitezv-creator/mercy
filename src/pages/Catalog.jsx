@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import ProductCard from '@/components/mercy/ProductCard';
+import Seo from '@/components/mercy/Seo';
 import { CATALOG_RASHGUARDS_IMAGE, CATALOG_SHORTS_IMAGE } from '@/lib/productImages';
 
 const ALL_SIZES = ['XS', 'S', 'M', 'L', 'XL', '2XL'];
@@ -57,7 +58,15 @@ export default function Catalog() {
   }, [products, sizeFilter, stockFilter, sortBy]);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-16 md:pt-20">
+    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+      <Seo
+        title={`${title} — MERCY | Alto rendimiento para artes marciales`}
+        description={category === 'shorts'
+          ? 'Shorts de MMA y grappling con ajuste anatómico y libertad total de movimiento. Diseñados en México. Envío gratis desde $1,200.'
+          : 'Rashguards de compresión 4-way stretch, UPF 50+ y diseños de edición limitada para BJJ y No-Gi. Hechos en México. Envío gratis desde $1,200.'}
+        path={category === 'shorts' ? '/shorts' : '/rashguards'}
+        image={headerImage}
+      />
       {/* Category header */}
       <div className="relative h-48 md:h-64 overflow-hidden">
         <img src={headerImage} alt={title} className="w-full h-full object-cover" />

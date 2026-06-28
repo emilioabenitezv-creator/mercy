@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, Menu, X, Heart } from 'lucide-react';
 import { useCart } from '@/lib/CartContext';
+import { SITE } from '@/lib/site';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -27,6 +28,10 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#2A2A2A]' : 'bg-transparent'
       }`}>
+        {/* Announcement bar */}
+        <div className="bg-[#E8003A] text-white text-center text-[11px] sm:text-xs font-heading tracking-[0.1em] py-2 px-4">
+          ENVÍO GRATIS DESDE ${SITE.freeShippingThreshold.toLocaleString()} · 10% OFF EN TU 1ER PEDIDO CON <span className="font-bold">BIENVENIDO10</span>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link to="/" className="flex items-center">
@@ -45,7 +50,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Link to="/wishlist" className="relative p-2 text-[#A0A0A0] hover:text-white transition-colors">
+              <Link to="/wishlist" aria-label="Favoritos" className="relative p-2 text-[#A0A0A0] hover:text-white transition-colors">
                 <Heart size={20} />
                 {wishlist.length > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#E8003A] rounded-full text-[10px] font-bold flex items-center justify-center text-white">
@@ -53,7 +58,7 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
-              <button onClick={() => setIsCartOpen(true)}
+              <button onClick={() => setIsCartOpen(true)} aria-label={`Carrito${itemCount > 0 ? ` (${itemCount})` : ''}`}
                 className="relative p-2 text-[#A0A0A0] hover:text-white transition-colors">
                 <ShoppingBag size={20} />
                 {itemCount > 0 && (
@@ -62,7 +67,7 @@ export default function Navbar() {
                   </span>
                 )}
               </button>
-              <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 text-white">
+              <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menú" aria-expanded={mobileOpen} className="md:hidden p-2 text-white">
                 {mobileOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>

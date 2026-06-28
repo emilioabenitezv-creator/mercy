@@ -14,6 +14,11 @@ import ProductDetail from '@/pages/ProductDetail';
 import About from '@/pages/About';
 import SizeGuide from '@/pages/SizeGuide';
 import Wishlist from '@/pages/Wishlist';
+import Checkout from '@/pages/Checkout';
+import Contact from '@/pages/Contact';
+import Shipping from '@/pages/Shipping';
+import Privacy from '@/pages/Privacy';
+import Terms from '@/pages/Terms';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -45,6 +50,11 @@ const AuthenticatedApp = () => {
         <Route path="/nosotros" element={<About />} />
         <Route path="/guia-de-tallas" element={<SizeGuide />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/contacto" element={<Contact />} />
+        <Route path="/envios-y-devoluciones" element={<Shipping />} />
+        <Route path="/privacidad" element={<Privacy />} />
+        <Route path="/terminos" element={<Terms />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

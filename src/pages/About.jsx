@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ABOUT_IMAGE } from '@/lib/productImages';
 import { Shield, Heart, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Seo from '@/components/mercy/Seo';
 
 const values = [
   { icon: Shield, title: 'DISCIPLINA', text: 'Cada pieza se diseña con la misma disciplina que un atleta aplica a su entrenamiento. Sin atajos, sin compromisos.' },
@@ -12,7 +13,13 @@ const values = [
 
 export default function About() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-16 md:pt-20">
+    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+      <Seo
+        title="Nosotros — MERCY | Nacidos del tatami mexicano"
+        description="Creada por atletas activos de BJJ, MMA y No-Gi en México. Conoce la historia, los pilares y el propósito detrás de MERCY."
+        path="/nosotros"
+        image={ABOUT_IMAGE}
+      />
       {/* Hero */}
       <div className="relative h-72 md:h-96 overflow-hidden">
         <img src={ABOUT_IMAGE} alt="Mercy tatami" className="w-full h-full object-cover" />

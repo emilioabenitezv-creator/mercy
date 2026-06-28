@@ -1,0 +1,17 @@
+{
+  "name": "MERCY — Equipo de Alto Rendimiento para Artes Marciales",
+  "short_name": "MERCY",
+  "description": "Rashguards, shorts y equipo de alto rendimiento para BJJ, MMA y No-Gi. Diseñado en México.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    {
+      "src": "https://media.base44.com/images/public/6a4196580f924f1a895fe044/58dcfb150_generated_9d6fbf40.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
           <p className="text-sm text-[#A0A0A0]">{t.city}</p>
 
           <div className="flex justify-center gap-4 mt-8">
-            <button onClick={prev}
+            <button onClick={prev} aria-label="Testimonio anterior"
               className="w-10 h-10 border border-[#2A2A2A] rounded flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-white transition-all">
               <ChevronLeft size={18} />
             </button>
@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
                   className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-[#E8003A] w-6' : 'bg-[#2A2A2A]'}`} />
               ))}
             </div>
-            <button onClick={next}
+            <button onClick={next} aria-label="Siguiente testimonio"
               className="w-10 h-10 border border-[#2A2A2A] rounded flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-white transition-all">
               <ChevronRight size={18} />
             </button>

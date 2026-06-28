@@ -2,13 +2,19 @@ import React from 'react';
 import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/lib/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CartDrawer() {
+  const navigate = useNavigate();
   const { items, subtotal, isCartOpen, setIsCartOpen, updateQuantity, removeItem,
     freeShippingRemaining, hasFreeShipping, FREE_SHIPPING_THRESHOLD } = useCart();
 
   const shippingProgress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
+
+  function goToCheckout() {
+    setIsCartOpen(false);
+    navigate('/checkout');
+  }
 
   return (
     <AnimatePresence>
@@ -24,7 +30,7 @@ export default function CartDrawer() {
           >
             <div className="flex items-center justify-between p-5 border-b border-[#2A2A2A]">
               <h2 className="font-heading text-xl tracking-wider text-white">TU CARRITO</h2>
-              <button onClick={() => setIsCartOpen(false)} className="text-[#A0A0A0] hover:text-white">
+              <button onClick={() => setIsCartOpen(false)} aria-label="Cerrar carrito" className="text-[#A0A0A0] hover:text-white">
                 <X size={24} />
               </button>
             </div>
@@ -95,7 +101,7 @@ export default function CartDrawer() {
                   <span className="font-heading tracking-wider text-[#A0A0A0]">SUBTOTAL</span>
                   <span className="text-xl font-mono font-bold text-white">${subtotal.toLocaleString()} MXN</span>
                 </div>
-                <button className="w-full py-4 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors">
+                <button onClick={goToCheckout} className="w-full py-4 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors">
                   PROCEDER AL PAGO
                 </button>
                 <button onClick={() => setIsCartOpen(false)}

@@ -23,7 +23,7 @@ export default function Wishlist() {
   }, [wishlist]);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-16 md:pt-20">
+    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="font-display text-4xl font-bold tracking-[0.05em] text-white uppercase text-center">
           Mis <span className="text-[#E8003A]">Favoritos</span>

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useCart } from '@/lib/CartContext';
 import StarRating from '@/components/mercy/StarRating';
 import NotifyModal from '@/components/mercy/NotifyModal';
 import ProductCard from '@/components/mercy/ProductCard';
 import ReviewSection from '@/components/mercy/ReviewSection';
-import { Minus, Plus, ShoppingBag, Zap, ChevronRight } from 'lucide-react';
+import Seo from '@/components/mercy/Seo';
+import { SITE } from '@/lib/site';
+import { Minus, Plus, ShoppingBag, Zap, ChevronRight, Truck, RotateCcw, ShieldCheck, CreditCard } from 'lucide-react';
 
 const SIZE_CHART = {
   rashguard: [
@@ -27,6 +29,7 @@ const SIZE_CHART = {
 
 export default function ProductDetail() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const { addItem, setIsCartOpen } = useCart();
   const [product, setProduct] = useState(null);
   const [related, setRelated] = useState([]);
@@ -86,8 +89,29 @@ export default function ProductDetail() {
   function handleBuyNow() {
     if (!canAddToCart) return;
     addItem(product, selectedSize, quantity);
-    setIsCartOpen(true);
+    navigate('/checkout');
   }
+
+  const msi = Math.round(product.price / 12);
+  const lowStock = outOfStockSizes.length > 0 && !allSoldOut;
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: [product.image_url, product.image_url_2].filter(Boolean),
+    description: product.description || product.story || `${product.name} — equipo de alto rendimiento para artes marciales.`,
+    brand: { '@type': 'Brand', name: 'MERCY' },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'MXN',
+      price: product.price,
+      availability: allSoldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+      url: `${SITE.url}/producto/${product.slug}`,
+    },
+    ...(product.rating > 0 && product.review_count > 0
+      ? { aggregateRating: { '@type': 'AggregateRating', ratingValue: product.rating, reviewCount: product.review_count } }
+      : {}),
+  };
 
   const tabs = [
     { key: 'description', label: 'Descripción' },
@@ -97,7 +121,14 @@ export default function ProductDetail() {
   ];
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-16 md:pt-20">
+    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px] pb-20 md:pb-0">
+      <Seo
+        title={`${product.name} — MERCY`}
+        description={product.description || product.story || `${product.name}: ${catLabel} de alto rendimiento para BJJ, MMA y No-Gi. Diseñado en México.`}
+        path={`/producto/${product.slug}`}
+        image={product.image_url}
+        jsonLd={productJsonLd}
+      />
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center gap-2 text-sm">
@@ -134,6 +165,10 @@ export default function ProductDetail() {
               <span className="font-mono text-3xl font-bold text-[#E8003A]">${product.price.toLocaleString()}</span>
               <span className="font-mono text-sm text-[#A0A0A0]">MXN</span>
             </div>
+            <p className="mt-1.5 text-sm text-[#A0A0A0] flex items-center gap-1.5">
+              <CreditCard size={14} className="text-[#A0A0A0]" />
+              o 12 pagos de <span className="text-white font-medium">${msi.toLocaleString()}</span> con Mercado Pago
+            </p>
 
             {product.rating > 0 && (
               <div className="mt-3">
@@ -168,16 +203,24 @@ export default function ProductDetail() {
                 })}
               </div>
               {!selectedSize && <p className="text-xs text-[#A0A0A0] mt-2">Selecciona una talla</p>}
+              {lowStock && (
+                <p className="text-xs text-[#FF5F1F] mt-2 flex items-center gap-1.5">
+                  <Zap size={12} /> Edición limitada — quedan pocas tallas
+                </p>
+              )}
+              <button onClick={() => setActiveTab('sizes')} className="text-xs text-[#A0A0A0] underline mt-2 hover:text-white transition-colors">
+                ¿Cuál es mi talla? Ver guía
+              </button>
             </div>
 
             {/* Quantity */}
             <div className="mt-6">
               <p className="font-heading text-sm tracking-wider text-white mb-3">CANTIDAD</p>
               <div className="flex items-center gap-3 bg-[#111111] border border-[#2A2A2A] rounded w-fit">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Disminuir cantidad"
                   className="p-3 text-[#A0A0A0] hover:text-white"><Minus size={16} /></button>
-                <span className="font-mono text-white w-8 text-center">{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}
+                <span className="font-mono text-white w-8 text-center" aria-live="polite">{quantity}</span>
+                <button onClick={() => setQuantity(quantity + 1)} aria-label="Aumentar cantidad"
                   className="p-3 text-[#A0A0A0] hover:text-white"><Plus size={16} /></button>
               </div>
             </div>
@@ -196,10 +239,12 @@ export default function ProductDetail() {
               </button>
             </div>
 
-            {/* Shipping info */}
-            <div className="mt-6 space-y-2 p-4 bg-[#111111] border border-[#2A2A2A] rounded-lg">
-              <p className="text-sm text-[#A0A0A0]">✓ Envío gratis en pedidos +$1,200 MXN</p>
-              <p className="text-sm text-[#A0A0A0]">✓ Entrega en 3-5 días hábiles</p>
+            {/* Trust / reassurance block */}
+            <div className="mt-6 grid grid-cols-2 gap-3 p-4 bg-[#111111] border border-[#2A2A2A] rounded-lg">
+              <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><Truck size={15} className="text-[#E8003A] flex-shrink-0" /> Envío gratis +${SITE.freeShippingThreshold.toLocaleString()}</p>
+              <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><Zap size={15} className="text-[#E8003A] flex-shrink-0" /> Entrega 3–5 días</p>
+              <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><RotateCcw size={15} className="text-[#E8003A] flex-shrink-0" /> 30 días de cambios</p>
+              <p className="text-xs text-[#A0A0A0] flex items-center gap-2"><ShieldCheck size={15} className="text-[#E8003A] flex-shrink-0" /> Pago 100% seguro</p>
             </div>
 
             {/* Tabs */}
@@ -296,6 +341,20 @@ export default function ProductDetail() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Sticky mobile add-to-cart bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0A0A0A]/95 backdrop-blur-md border-t border-[#2A2A2A] px-4 py-3 flex items-center gap-3">
+        <div className="flex flex-col leading-tight">
+          <span className="font-mono text-lg font-bold text-white">${product.price.toLocaleString()}</span>
+          {selectedSize
+            ? <span className="text-[10px] text-[#A0A0A0]">Talla {selectedSize}</span>
+            : <span className="text-[10px] text-[#E8003A]">↑ Elige tu talla</span>}
+        </div>
+        <button onClick={handleAddToCart} disabled={!canAddToCart}
+          className="flex-1 py-3 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-sm tracking-[0.15em] transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+          AGREGAR
+        </button>
       </div>
 
       <NotifyModal isOpen={notifyModal.open}

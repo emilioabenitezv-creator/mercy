@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={HERO_IMAGE} alt="Atleta de artes marciales" className="w-full h-full object-cover" />
+        <img src={HERO_IMAGE} alt="Atleta de artes marciales entrenando con equipo MERCY" fetchPriority="high" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
       </div>

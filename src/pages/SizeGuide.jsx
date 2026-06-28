@@ -1,5 +1,6 @@
 import React from 'react';
 import { Ruler } from 'lucide-react';
+import Seo from '@/components/mercy/Seo';
 
 const rashguardSizes = [
   ['XS', '82-86', '66-70', '86-90'],
@@ -19,7 +20,12 @@ const shortsSizes = [
 
 export default function SizeGuide() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-16 md:pt-20">
+    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+      <Seo
+        title="Guía de Tallas — MERCY"
+        description="Encuentra tu talla perfecta de rashguard y short. Medidas en cm de pecho, cintura y cadera, y recomendaciones de ajuste."
+        path="/guia-de-tallas"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-[0.05em] text-white uppercase text-center">
           Guía de <span className="text-[#E8003A]">Tallas</span>
