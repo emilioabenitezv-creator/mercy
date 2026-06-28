@@ -1,0 +1,25 @@
+{
+  "name": "StockNotification",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "email",
+    "product_id",
+    "product_name",
+    "size"
+  ]
+}

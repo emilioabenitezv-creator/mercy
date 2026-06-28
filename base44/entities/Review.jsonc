@@ -1,0 +1,30 @@
+{
+  "name": "Review",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_city": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "text": {
+      "type": "string"
+    },
+    "size_purchased": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_id",
+    "author_name",
+    "rating",
+    "text"
+  ]
+}
