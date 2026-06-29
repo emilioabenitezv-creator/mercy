@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const links = [
   { label: 'RASHGUARDS', path: '/rashguards' },
   { label: 'SHORTS', path: '/shorts' },
+  { label: 'GUANTES', path: '/accesorios' },
   { label: 'NOSOTROS', path: '/nosotros' },
   { label: 'GUÍA DE TALLAS', path: '/guia-de-tallas' },
 ];
