@@ -29,8 +29,8 @@ export default function Navbar() {
         scrolled ? 'bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/[0.07]' : 'bg-transparent'
       }`}>
         {/* Announcement bar */}
-        <div className="bg-[#E8003A] text-white text-center text-[11px] sm:text-xs font-heading tracking-[0.14em] py-2.5 px-4">
-          ENVÍO GRATIS DESDE ${SITE.freeShippingThreshold.toLocaleString()} · 10% OFF EN TU 1ER PEDIDO CON <span className="font-bold">BIENVENIDO10</span>
+        <div className="bg-[#E8003A] text-white text-center text-[11px] sm:text-xs tracking-[0.04em] py-2.5 px-4">
+          Envío gratis desde ${SITE.freeShippingThreshold.toLocaleString()} · 10% off con <span className="font-bold">BIENVENIDO10</span>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">

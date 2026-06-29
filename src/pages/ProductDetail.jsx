@@ -161,9 +161,9 @@ export default function ProductDetail() {
               {product.name}
             </h1>
 
-            <div className="mt-4 flex items-center gap-4">
-              <span className="font-mono text-3xl font-bold text-[#E8003A]">${product.price.toLocaleString()}</span>
-              <span className="font-mono text-sm text-[#A0A0A0]">MXN</span>
+            <div className="mt-4 flex items-baseline gap-2">
+              <span className="font-mono text-3xl font-bold text-white">${product.price.toLocaleString()}</span>
+              <span className="font-mono text-sm text-[#7A7A7A]">MXN</span>
             </div>
             <p className="mt-1.5 text-sm text-[#A0A0A0] flex items-center gap-1.5">
               <CreditCard size={14} className="text-[#A0A0A0]" />
@@ -180,7 +180,12 @@ export default function ProductDetail() {
 
             {/* Size selector */}
             <div className="mt-8">
-              <p className="font-heading text-sm tracking-wider text-white mb-3">TALLA</p>
+              <div className="flex items-center justify-between mb-3">
+                <p className="font-heading text-sm tracking-wider text-white">TALLA</p>
+                <button onClick={() => setActiveTab('sizes')} className="text-xs text-[#A0A0A0] underline underline-offset-2 hover:text-white transition-colors">
+                  Guía de tallas
+                </button>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {(product.sizes || []).map(size => {
                   const available = isSizeAvailable(size);
@@ -202,15 +207,13 @@ export default function ProductDetail() {
                   );
                 })}
               </div>
-              {!selectedSize && <p className="text-xs text-[#A0A0A0] mt-2">Selecciona una talla</p>}
-              {lowStock && (
-                <p className="text-xs text-[#FF5F1F] mt-2 flex items-center gap-1.5">
-                  <Zap size={12} /> Edición limitada — quedan pocas tallas
-                </p>
-              )}
-              <button onClick={() => setActiveTab('sizes')} className="text-xs text-[#A0A0A0] underline mt-2 hover:text-white transition-colors">
-                ¿Cuál es mi talla? Ver guía
-              </button>
+              {!selectedSize
+                ? <p className="text-xs text-[#A0A0A0] mt-3">Selecciona tu talla</p>
+                : lowStock && (
+                    <p className="text-xs text-[#FF5F1F] mt-3 flex items-center gap-1.5">
+                      <Zap size={12} /> Quedan pocas tallas
+                    </p>
+                  )}
             </div>
 
             {/* Quantity */}

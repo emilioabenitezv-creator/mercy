@@ -46,14 +46,12 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#8A8A8A]">
+          <div className="mt-10 flex items-center gap-2.5 text-xs text-[#8A8A8A]">
             <span className="flex items-center gap-1.5">
-              <Star size={13} className="fill-[#E8003A] text-[#E8003A]" /> 4.8/5 valoración media
+              <Star size={13} className="fill-[#E8003A] text-[#E8003A]" /> 4.8/5
             </span>
-            <span className="hidden sm:inline text-white/15">|</span>
+            <span className="w-1 h-1 rounded-full bg-[#3A3A3A]" />
             <span>+2,000 atletas equipados</span>
-            <span className="hidden sm:inline text-white/15">|</span>
-            <span>Envío gratis +$1,200</span>
           </div>
         </motion.div>
       </div>

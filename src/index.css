@@ -88,9 +88,10 @@
 }
 
 @layer components {
-  /* Refined "kicker" label used above section titles */
+  /* Refined "kicker" label used above section titles.
+     Neutral by design so red stays reserved for actions and title accents. */
   .eyebrow {
-    @apply font-heading text-[11px] font-medium tracking-[0.32em] uppercase text-[#E8003A];
+    @apply font-heading text-[11px] font-medium tracking-[0.32em] uppercase text-[#8A8A8A];
   }
 
   /* Unified premium button system */
