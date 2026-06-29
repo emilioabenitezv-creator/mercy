@@ -1,3 +1,4 @@
+import { lazy } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -9,16 +10,18 @@ import ScrollToTop from './components/ScrollToTop';
 import { CartProvider } from '@/lib/CartContext';
 import Layout from '@/components/mercy/Layout';
 import Home from '@/pages/Home';
-import Catalog from '@/pages/Catalog';
-import ProductDetail from '@/pages/ProductDetail';
-import About from '@/pages/About';
-import SizeGuide from '@/pages/SizeGuide';
-import Wishlist from '@/pages/Wishlist';
-import Checkout from '@/pages/Checkout';
-import Contact from '@/pages/Contact';
-import Shipping from '@/pages/Shipping';
-import Privacy from '@/pages/Privacy';
-import Terms from '@/pages/Terms';
+
+// Lazy-load non-landing routes so each ships its own chunk (smaller initial JS).
+const Catalog = lazy(() => import('@/pages/Catalog'));
+const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
+const About = lazy(() => import('@/pages/About'));
+const SizeGuide = lazy(() => import('@/pages/SizeGuide'));
+const Wishlist = lazy(() => import('@/pages/Wishlist'));
+const Checkout = lazy(() => import('@/pages/Checkout'));
+const Contact = lazy(() => import('@/pages/Contact'));
+const Shipping = lazy(() => import('@/pages/Shipping'));
+const Privacy = lazy(() => import('@/pages/Privacy'));
+const Terms = lazy(() => import('@/pages/Terms'));
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();

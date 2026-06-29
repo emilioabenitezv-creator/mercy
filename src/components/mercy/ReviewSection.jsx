@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { base44 } from '@/api/base44Client';
 import StarRating from './StarRating';
 import { Star } from 'lucide-react';
-import moment from 'moment';
+import { format } from 'date-fns';
+
+function formatDate(value) {
+  if (!value) return '';
+  const d = new Date(value);
+  return isNaN(d) ? '' : format(d, 'dd/MM/yy');
+}
 
 export default function ReviewSection({ productId }) {
   const [reviews, setReviews] = useState([]);
@@ -112,7 +118,7 @@ export default function ReviewSection({ productId }) {
                   {review.size_purchased && <span className="text-xs text-[#A0A0A0]">Talla: {review.size_purchased}</span>}
                 </div>
               </div>
-              <span className="text-xs text-[#A0A0A0] font-mono">{moment(review.created_date).format('DD/MM/YY')}</span>
+              <span className="text-xs text-[#A0A0A0] font-mono">{formatDate(review.created_date)}</span>
             </div>
             <p className="mt-3 text-sm text-[#A0A0A0] leading-relaxed">{review.text}</p>
             {review.author_city && <p className="mt-2 text-xs text-[#6A6A6A]">{review.author_city}</p>}
