@@ -20,7 +20,7 @@ const shortsSizes = [
 
 export default function SizeGuide() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <Seo
         title="Guía de Tallas — MERCY"
         description="Encuentra tu talla perfecta de rashguard y short. Medidas en cm de pecho, cintura y cadera, y recomendaciones de ajuste."

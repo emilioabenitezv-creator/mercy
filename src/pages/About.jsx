@@ -13,7 +13,7 @@ const values = [
 
 export default function About() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen">
       <Seo
         title="Nosotros — MERCY | Nacidos del tatami mexicano"
         description="Creada por atletas activos de BJJ, MMA y No-Gi en México. Conoce la historia, los pilares y el propósito detrás de MERCY."

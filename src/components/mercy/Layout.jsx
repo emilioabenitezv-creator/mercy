@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import AnnouncementBar from './AnnouncementBar';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CartDrawer from './CartDrawer';
@@ -16,6 +17,7 @@ function PageLoader() {
 export default function Layout() {
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
+      <AnnouncementBar />
       <Navbar />
       <main>
         <Suspense fallback={<PageLoader />}>

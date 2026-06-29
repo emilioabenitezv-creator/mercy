@@ -13,7 +13,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <Seo
         title="Contacto — MERCY"
         description="¿Dudas sobre tallas, envíos o tu pedido? Escríbenos por WhatsApp o correo. Respondemos en menos de 24 h hábiles."

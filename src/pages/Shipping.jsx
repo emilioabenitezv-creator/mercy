@@ -13,7 +13,7 @@ const cards = [
 
 export default function Shipping() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <Seo
         title="Envíos y Devoluciones — MERCY"
         description="Envío gratis desde $1,200 MXN, entrega en 3–5 días y 30 días para cambios de talla. Compra protegida en MERCY."

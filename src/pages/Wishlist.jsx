@@ -23,7 +23,7 @@ export default function Wishlist() {
   }, [wishlist]);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <span className="eyebrow">Tu selección</span>

@@ -68,7 +68,7 @@ export default function Checkout() {
 
   if (done) {
     return (
-      <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px] flex items-center justify-center px-4">
+      <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10 flex items-center justify-center px-4">
         <Seo title="Pedido confirmado — MERCY" description="Gracias por tu compra en MERCY." path="/checkout" />
         <div className="text-center max-w-md">
           <CheckCircle2 size={56} className="text-green-400 mx-auto mb-6" />
@@ -87,7 +87,7 @@ export default function Checkout() {
 
   if (items.length === 0) {
     return (
-      <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px] flex items-center justify-center px-4">
+      <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10 flex items-center justify-center px-4">
         <Seo title="Checkout — MERCY" description="Finaliza tu compra en MERCY." path="/checkout" />
         <div className="text-center">
           <ShoppingBag size={48} className="text-[#2A2A2A] mx-auto mb-4" />
@@ -110,7 +110,7 @@ export default function Checkout() {
   );
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <Seo title="Checkout — MERCY" description="Finaliza tu compra de forma segura en MERCY." path="/checkout" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <span className="eyebrow">Casi listo</span>

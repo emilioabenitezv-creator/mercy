@@ -4,7 +4,7 @@ import { SITE } from '@/lib/site';
 
 export default function Privacy() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <Seo
         title="Aviso de Privacidad — MERCY"
         description="Aviso de privacidad de MercyFit. Cómo recopilamos, usamos y protegemos tus datos personales."

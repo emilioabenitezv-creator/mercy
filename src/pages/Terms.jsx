@@ -4,7 +4,7 @@ import { SITE } from '@/lib/site';
 
 export default function Terms() {
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen pt-8 md:pt-10">
       <Seo
         title="Términos y Condiciones — MERCY"
         description="Términos y condiciones de compra en MercyFit: precios, pagos, envíos, cambios y propiedad intelectual."

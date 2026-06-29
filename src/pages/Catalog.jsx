@@ -58,7 +58,7 @@ export default function Catalog() {
   }, [products, sizeFilter, stockFilter, sortBy]);
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px]">
+    <div className="bg-[#0A0A0A] min-h-screen">
       <Seo
         title={`${title} — MERCY | Alto rendimiento para artes marciales`}
         description={category === 'shorts'

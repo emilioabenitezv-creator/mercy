@@ -121,7 +121,7 @@ export default function ProductDetail() {
   ];
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen pt-[100px] md:pt-[116px] pb-20 md:pb-0">
+    <div className="bg-[#0A0A0A] min-h-screen pt-6 pb-20 md:pb-0">
       <Seo
         title={`${product.name} — MERCY`}
         description={product.description || product.story || `${product.name}: ${catLabel} de alto rendimiento para BJJ, MMA y No-Gi. Diseñado en México.`}
