@@ -3,6 +3,7 @@ import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/lib/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import PaymentMethods from './PaymentMethods';
 
 export default function CartDrawer() {
   const navigate = useNavigate();
@@ -108,6 +109,8 @@ export default function CartDrawer() {
                   className="w-full py-3 rounded-lg border border-white/25 text-white font-heading text-sm tracking-[0.18em] uppercase hover:bg-white hover:text-black transition-all duration-300">
                   Seguir comprando
                 </button>
+                <p className="text-center text-[11px] text-[#7A7A7A]">Impuestos incluidos · Envío calculado en el checkout</p>
+                <div className="flex justify-center"><PaymentMethods compact /></div>
               </div>
             )}
           </motion.div>

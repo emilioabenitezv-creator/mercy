@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import ProductCard from '@/components/mercy/ProductCard';
 import Seo from '@/components/mercy/Seo';
@@ -13,7 +14,7 @@ export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sizeFilter, setSizeFilter] = useState('');
-  const [stockFilter, setStockFilter] = useState('all');
+  const [onlyInStock, setOnlyInStock] = useState(false);
   const [sortBy, setSortBy] = useState('bestseller');
 
   const catKey = category === 'shorts' ? 'shorts' : 'rashguard';
@@ -35,15 +36,10 @@ export default function Catalog() {
       result = result.filter(p => p.sizes?.includes(sizeFilter));
     }
 
-    if (stockFilter === 'instock') {
+    if (onlyInStock) {
       result = result.filter(p => {
         const available = (p.sizes || []).filter(s => !(p.sizes_out_of_stock || []).includes(s));
         return available.length > 0;
-      });
-    } else if (stockFilter === 'outofstock') {
-      result = result.filter(p => {
-        const available = (p.sizes || []).filter(s => !(p.sizes_out_of_stock || []).includes(s));
-        return available.length === 0;
       });
     }
 
@@ -55,7 +51,7 @@ export default function Catalog() {
     }
 
     return result;
-  }, [products, sizeFilter, stockFilter, sortBy]);
+  }, [products, sizeFilter, onlyInStock, sortBy]);
 
   return (
     <div className="bg-[#0A0A0A] min-h-screen">
@@ -83,6 +79,13 @@ export default function Catalog() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm mb-8">
+          <Link to="/" className="text-[#A0A0A0] hover:text-white transition-colors">Inicio</Link>
+          <ChevronRight size={14} className="text-[#5A5A5A]" />
+          <span className="text-white">{title.charAt(0) + title.slice(1).toLowerCase()}</span>
+        </div>
+
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-white/[0.07]">
           <div className="flex flex-wrap gap-2">
@@ -98,19 +101,18 @@ export default function Catalog() {
             ))}
           </div>
 
-          <div className="flex gap-2 ml-auto">
-            <select value={stockFilter} onChange={e => setStockFilter(e.target.value)}
-              className="px-3.5 py-1.5 text-xs font-heading tracking-[0.1em] bg-[#0F0F0F] border border-white/[0.12] rounded-lg text-[#A0A0A0] focus:outline-none focus:border-[#E8003A] transition-colors">
-              <option value="all">Disponibilidad</option>
-              <option value="instock">En Stock</option>
-              <option value="outofstock">Agotado</option>
-            </select>
+          <div className="flex items-center gap-3 ml-auto">
+            <label className="flex items-center gap-2 text-xs font-heading tracking-[0.1em] text-[#A0A0A0] cursor-pointer select-none hover:text-white transition-colors">
+              <input type="checkbox" checked={onlyInStock} onChange={e => setOnlyInStock(e.target.checked)}
+                className="w-4 h-4 accent-[#E8003A] cursor-pointer" />
+              SOLO EN STOCK
+            </label>
             <select value={sortBy} onChange={e => setSortBy(e.target.value)}
               className="px-3.5 py-1.5 text-xs font-heading tracking-[0.1em] bg-[#0F0F0F] border border-white/[0.12] rounded-lg text-[#A0A0A0] focus:outline-none focus:border-[#E8003A] transition-colors">
-              <option value="bestseller">Más Vendido</option>
-              <option value="price-low">Precio Menor</option>
-              <option value="price-high">Precio Mayor</option>
-              <option value="newest">Nuevo</option>
+              <option value="bestseller">Destacados</option>
+              <option value="price-low">Precio ↑</option>
+              <option value="price-high">Precio ↓</option>
+              <option value="newest">Más nuevo</option>
             </select>
           </div>
         </div>
@@ -126,7 +128,7 @@ export default function Catalog() {
           </div>
         ) : (
           <>
-            <p className="text-xs text-[#7A7A7A] font-mono mb-6">{filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}</p>
+            <p className="text-xs text-[#7A7A7A] font-mono mb-6">{filtered.length} {filtered.length === 1 ? 'producto encontrado' : 'productos encontrados'}</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-7">
               {filtered.map(product => (
                 <ProductCard key={product.id} product={product} />

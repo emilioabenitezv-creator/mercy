@@ -22,6 +22,7 @@ const Contact = lazy(() => import('@/pages/Contact'));
 const Shipping = lazy(() => import('@/pages/Shipping'));
 const Privacy = lazy(() => import('@/pages/Privacy'));
 const Terms = lazy(() => import('@/pages/Terms'));
+const FAQ = lazy(() => import('@/pages/FAQ'));
 const Login = lazy(() => import('@/pages/Login'));
 const Register = lazy(() => import('@/pages/Register'));
 const ForgotPassword = lazy(() => import('@/pages/ForgotPassword'));
@@ -63,6 +64,7 @@ const AuthenticatedApp = () => {
         <Route path="/envios-y-devoluciones" element={<Shipping />} />
         <Route path="/privacidad" element={<Privacy />} />
         <Route path="/terminos" element={<Terms />} />
+        <Route path="/preguntas-frecuentes" element={<FAQ />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
