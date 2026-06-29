@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '@/components/mercy/HeroSection';
 import TrustBar from '@/components/mercy/TrustBar';
 import BestsellersSection from '@/components/mercy/BestsellersSection';
+import NewArrivalsSection from '@/components/mercy/NewArrivalsSection';
 import WhyMercySection from '@/components/mercy/WhyMercySection';
 import AthletesSection from '@/components/mercy/AthletesSection';
 import TestimonialsSection from '@/components/mercy/TestimonialsSection';
@@ -30,6 +31,7 @@ export default function Home() {
       <HeroSection />
       <TrustBar />
       <BestsellersSection />
+      <NewArrivalsSection />
       <WhyMercySection />
       <AthletesSection />
       <TestimonialsSection />
