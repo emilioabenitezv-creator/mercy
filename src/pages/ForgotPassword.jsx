@@ -18,7 +18,7 @@ export default function ForgotPassword() {
     try {
       await base44.auth.resetPasswordRequest(email);
     } catch {
-      // Always show success regardless
+      // Siempre mostramos éxito por seguridad
     } finally {
       setLoading(false);
       setSent(true);
@@ -28,46 +28,30 @@ export default function ForgotPassword() {
   return (
     <AuthLayout
       icon={Mail}
-      title="Reset password"
-      subtitle="We'll send you a link to reset it"
+      title="Recuperar contraseña"
+      subtitle="Te enviaremos un enlace para restablecerla"
       footer={
         <Link to="/login" className="text-primary font-medium hover:underline">
-          <ArrowLeft className="w-3 h-3 inline mr-1" />Back to log in
+          <ArrowLeft className="w-3 h-3 inline mr-1" />Volver a iniciar sesión
         </Link>
       }
     >
       {sent ? (
-        <p className="text-sm text-foreground text-center">
-          If an account exists with that email, you'll receive a password reset link shortly.
+        <p className="text-sm text-white text-center">
+          Si existe una cuenta con ese correo, recibirás un enlace para restablecer tu contraseña en breve.
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email address</Label>
+            <Label htmlFor="email">Correo</Label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
-              <Input
-                id="email"
-                type="email"
-                autoComplete="email"
-                autoFocus
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 h-12"
-                required
-              />
+              <Input id="email" type="email" autoComplete="email" autoFocus placeholder="tu@correo.com"
+                value={email} onChange={(e) => setEmail(e.target.value)} className="pl-10 h-12" required />
             </div>
           </div>
           <Button type="submit" className="w-full h-12 font-medium" disabled={loading}>
-            {loading ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Sending...
-              </>
-            ) : (
-              "Send reset link"
-            )}
+            {loading ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Enviando…</>) : ("Enviar enlace")}
           </Button>
         </form>
       )}
