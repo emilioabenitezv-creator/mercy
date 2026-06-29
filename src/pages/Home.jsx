@@ -5,7 +5,9 @@ import BestsellersSection from '@/components/mercy/BestsellersSection';
 import NewArrivalsSection from '@/components/mercy/NewArrivalsSection';
 import CategoryBanners from '@/components/mercy/CategoryBanners';
 import WhyMercySection from '@/components/mercy/WhyMercySection';
-import AthletesSection from '@/components/mercy/AthletesSection';
+// Sección "Nuestros Atletas" oculta temporalmente (aún no tenemos atletas).
+// Para reactivarla: descomenta este import y el <AthletesSection /> de abajo.
+// import AthletesSection from '@/components/mercy/AthletesSection';
 import TestimonialsSection from '@/components/mercy/TestimonialsSection';
 import EmailCaptureSection from '@/components/mercy/EmailCaptureSection';
 import Seo from '@/components/mercy/Seo';
@@ -35,7 +37,7 @@ export default function Home() {
       <CategoryBanners />
       <NewArrivalsSection />
       <WhyMercySection />
-      <AthletesSection />
+      {/* <AthletesSection />  ← oculta hasta tener atletas; descomenta para reactivar */}
       <TestimonialsSection />
       <EmailCaptureSection />
     </div>
