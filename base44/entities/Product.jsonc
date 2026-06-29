@@ -18,6 +18,9 @@
     "price": {
       "type": "number"
     },
+    "compare_at_price": {
+      "type": "number"
+    },
     "description": {
       "type": "string"
     },

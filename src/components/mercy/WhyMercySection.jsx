@@ -8,19 +8,19 @@ const pillars = [
     icon: Layers,
     title: 'MATERIAL PREMIUM',
     spec: 'UPF 50+ · 4-way stretch',
-    description: 'Tela de compresión de secado rápido y tecnología textil de alto rendimiento para cada entrenamiento.',
+    description: 'Tela 4-way stretch, secado rápido, resistente a raspones y rozaduras del tatami.',
   },
   {
     icon: Palette,
-    title: 'ARTE ÚNICO',
+    title: 'DISEÑOS ÚNICOS',
     spec: 'Ediciones limitadas',
-    description: 'Cada diseño cuenta una historia. Piezas para guerreros que destacan dentro y fuera del tatami.',
+    description: 'Arte mexicano combinado con cultura marcial. Ediciones limitadas para quienes destacan.',
   },
   {
     icon: Zap,
-    title: 'HECHO PARA RENDIR',
-    spec: 'Costuras flatlock reforzadas',
-    description: 'Ajuste anatómico sin restricciones de movimiento. Probado por atletas reales en competencia.',
+    title: 'PROBADO EN EL TATAMI',
+    spec: 'BJJ · MMA · Grappling',
+    description: 'Cada pieza fue diseñada y probada por practicantes reales de BJJ, MMA y Grappling.',
   },
 ];
 

@@ -1,24 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart } from 'lucide-react';
+import { Heart, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/lib/CartContext';
 import StarRating from './StarRating';
 import { motion } from 'framer-motion';
 
 export default function ProductCard({ product }) {
-  const { toggleWishlist, isInWishlist } = useCart();
+  const { toggleWishlist, isInWishlist, addItem, setIsCartOpen } = useCart();
   const [hovered, setHovered] = useState(false);
 
-  const allSizesOut = product.sizes?.length > 0 && product.sizes_out_of_stock?.length >= product.sizes?.length;
+  const outOfStock = product.sizes_out_of_stock || [];
+  const sizes = product.sizes || [];
+  const allSizesOut = sizes.length > 0 && outOfStock.length >= sizes.length;
+  const firstAvailable = sizes.find(s => !outOfStock.includes(s));
 
-  // Show a single badge (priority order) to avoid clutter.
+  const onSale = product.compare_at_price && product.compare_at_price > product.price;
+  const discountPct = onSale ? Math.round((1 - product.price / product.compare_at_price) * 100) : 0;
+
+  // Single status badge (priority order) to avoid clutter.
   const badge = allSizesOut
     ? { label: 'AGOTADO', cls: 'bg-[#1A1A1A]/90 text-[#A0A0A0]' }
-    : product.is_new
-      ? { label: 'NUEVO', cls: 'bg-white text-black' }
-      : product.is_bestseller
-        ? { label: 'MÁS VENDIDO', cls: 'bg-[#E8003A] text-white' }
-        : null;
+    : onSale
+      ? { label: `${discountPct}% OFF`, cls: 'bg-[#E8003A] text-white' }
+      : product.is_new
+        ? { label: 'NUEVO', cls: 'bg-[#FF5F1F] text-white' }
+        : product.is_bestseller
+          ? { label: 'MÁS VENDIDO', cls: 'bg-white text-black' }
+          : null;
+
+  function quickAdd(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!firstAvailable) return;
+    addItem(product, firstAvailable, 1);
+    setIsCartOpen(true);
+  }
 
   return (
     <motion.div
@@ -31,22 +47,20 @@ export default function ProductCard({ product }) {
       {/* Whole-card click target */}
       <Link to={`/producto/${product.slug}`} className="absolute inset-0 z-[1]" aria-label={product.name} />
 
-      {/* Single badge */}
       {badge && (
         <span className={`absolute top-3 left-3 z-10 px-2.5 py-1 text-[10px] font-heading tracking-[0.12em] rounded ${badge.cls} backdrop-blur-sm`}>
           {badge.label}
         </span>
       )}
 
-      {/* Wishlist */}
       <button onClick={(e) => { e.preventDefault(); toggleWishlist(product.id); }}
         aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
         className="absolute top-3 right-3 z-10 p-2 bg-[#0A0A0A]/40 backdrop-blur-sm rounded-full hover:bg-[#0A0A0A] transition-all">
         <Heart size={16} className={isInWishlist(product.id) ? 'fill-[#E8003A] text-[#E8003A]' : 'text-white'} />
       </button>
 
-      {/* Image */}
-      <div className="aspect-[4/5] overflow-hidden bg-[#0A0A0A]">
+      {/* Image + quick add */}
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#0A0A0A]">
         <img
           src={hovered && product.image_url_2 ? product.image_url_2 : product.image_url}
           alt={product.name}
@@ -54,6 +68,12 @@ export default function ProductCard({ product }) {
           decoding="async"
           className={`w-full h-full object-cover transition-transform duration-700 ${allSizesOut ? 'opacity-50 grayscale' : ''} group-hover:scale-[1.05]`}
         />
+        {!allSizesOut && firstAvailable && (
+          <button onClick={quickAdd}
+            className="absolute bottom-0 left-0 right-0 z-[5] flex items-center justify-center gap-2 py-3 bg-[#E8003A] hover:bg-[#C0002E] text-white font-heading text-xs tracking-[0.12em] transition-all duration-200 translate-y-full group-hover:translate-y-0 max-md:translate-y-0">
+            <ShoppingBag size={15} /> AGREGAR AL CARRITO
+          </button>
+        )}
       </div>
 
       {/* Info */}
@@ -66,8 +86,11 @@ export default function ProductCard({ product }) {
             <StarRating rating={product.rating} size={12} reviewCount={product.review_count} />
           </div>
         )}
-        <div className="mt-3 flex items-baseline gap-1.5">
-          <span className="font-mono text-lg font-bold text-white">${product.price.toLocaleString()}</span>
+        <div className="mt-3 flex items-baseline gap-2">
+          <span className={`font-mono text-lg font-bold ${onSale ? 'text-[#E8003A]' : 'text-white'}`}>${product.price.toLocaleString()}</span>
+          {onSale && (
+            <span className="font-mono text-sm text-[#7A7A7A] line-through">${product.compare_at_price.toLocaleString()}</span>
+          )}
           <span className="text-xs text-[#7A7A7A] font-mono">MXN</span>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import CartDrawer from './CartDrawer';
 import AddedToCartToast from './AddedToCartToast';
+import EmailPopup from './EmailPopup';
 
 function PageLoader() {
   return (
@@ -27,6 +28,7 @@ export default function Layout() {
       <Footer />
       <CartDrawer />
       <AddedToCartToast />
+      <EmailPopup />
     </div>
   );
 }
